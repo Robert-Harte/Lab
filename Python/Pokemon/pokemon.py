@@ -8,9 +8,9 @@ import logging
 import random
 import requests
 
-output_path = "Pokemon"      # Root directory of output files. Change here.
+output_path = ""      # Root directory of output files. Change here.
 base_url = "https://pokeapi.co/api/v2/pokemon"      # Base URL for the pokemon API.
-logging.basicConfig(level=logging.DEBUG, filename=f"{output_path}/logs/pokemon.log", format="%(asctime)s - %(levelname)s - %(message)s") # Setup log file details
+logging.basicConfig(level=logging.DEBUG, filename=f"{output_path}/pokemon.log", format="%(asctime)s - %(levelname)s - %(message)s") # Setup log file details
 
 # Make API call and get pokemon data
 def get_pokemon_info(id):
@@ -38,7 +38,7 @@ def parse_pokemon_data(pokemon):
    
 def write_pokemon_data(pokemon):
     try:
-        filename = f"{output_path}/pokemon/{datetime.now().strftime('%Y%m%d')}_{pokemon['name']}.json"
+        filename = f"{output_path}/{datetime.now().strftime('%Y%m%d')}_{pokemon['name']}.json"
         with open(filename, "x") as f:
             json.dump(pokemon, f)
             logging.info(f"Created file: {filename}")
