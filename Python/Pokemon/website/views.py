@@ -9,8 +9,12 @@ POKEMON_URL = "https://pokeapi.co/api/v2/pokemon"  # Base URL for the pokemon AP
 
 views = Blueprint("views", __name__)
 
-@views.route("/pokemon", methods=["GET", "POST"])
+@views.route("/", methods=["GET"])
 def home():
+    return render_template("index.html")
+
+@views.route("/pokemon", methods=["GET", "POST"])
+def pokemon():
     if request.method == "POST":
         response = requests.get(f"{POKEMON_URL}/{random.randint(1,151)}")
         if response.status_code == 200:

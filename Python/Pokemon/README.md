@@ -1,3 +1,9 @@
+## v0.4
+
+I have implemented this now on Docker - run the below to run the image.
+
+docker run --rm -p 5000:5000 pokemon-web:latest 
+
 ## v0.3
 
 Updated the app so that it now a web app running on flask. Pokemon which are retrieved are now stored on a database. Removed the docker file as it has not yet been implemented.
