@@ -1,0 +1,5 @@
+*.log
+*.venv/
+/Python/local_settings/
+
+Python/Pokemon/Deployment notes.md

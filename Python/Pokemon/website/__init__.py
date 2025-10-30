@@ -17,7 +17,6 @@ database = "pokemon"
 def create_app():
     app = Flask(__name__)
     app.config["SQLALCHEMY_DATABASE_URI"] = f"postgresql://{user}:{password}@{host}:{port}/{database}"
-    #app.config["SQLALCHEMY_DATABASE_URI"] = f"sqlite:///{DB_NAME}"
     #app.config["SECRET_KEY"] = "asjlk;fdsAAHDSFHal;k2345"
     db.init_app(app)
     

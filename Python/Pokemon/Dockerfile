@@ -4,10 +4,10 @@ FROM python:3.12-slim
 WORKDIR /opt/Pokemon
 
 # Copy requirements and run first
-COPY requirements.txt requirements.txt
+COPY requirements requirements
 
 # Install dependancies from requirements.txt
-RUN pip install -r requirements.txt
+RUN pip install -r requirements
 
 # Copy app files into the container
 COPY . .
