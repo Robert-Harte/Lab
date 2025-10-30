@@ -1,6 +1,14 @@
+## v0.5
+
+Updated the app to now connect to an external Postgres database running on another container.
+
+To run successfully, both the pokemon container and the postgresql container need to be running.
+
+
+
 ## v0.4
 
-I have implemented this now on Docker - run the below to run the image.
+Updated the app to now run with Docker - run the below to run the image.
 
 
 docker run --rm -p 5000:5000 pokemon-web:latest 
@@ -16,6 +24,7 @@ Updated the app so that it now a web app running on flask. Pokemon which are ret
 
 The app was configured to run as a docker file.
 - Added a dockerfile
+
 
 ## v0.1
 
