@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Pokemon
+{% endblock %}
+
+
+{% block body %}
+
+<div class="content" align="center">
+    <h1 align="center">Pokemon</h1>
+
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Number</th>
+            <th>Height</th>
+            <th>Weight</th>
+            <th>Type</th>
+        </tr>
+       {% for pokemon in pokemon %}
+            <tr>
+                <td>{{ pokemon.name }}</td>
+                <td>{{ pokemon.number }}</td>
+                <td>{{ pokemon.height }}</td>
+                <td>{{ pokemon.weight }}</td>
+                <td>{{ pokemon.type }}</td>
+                <td><button type="button" class="btn" onClick="deletePokemon({{ pokemon.id }})">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+    </br>
+            
+    <form action="/pokemon" method="POST">
+        <input type="submit" value="Get Pokemon">
+    </form>
+</div>
+
+{% endblock %}
