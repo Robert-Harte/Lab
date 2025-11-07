@@ -1,0 +1,54 @@
+version: '3.1' # Docker version number
+services:
+
+  postgres:
+    image: postgres:14.19-alpine3.21
+    container_name: postgres_db
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_DB: ${DATABASE_NAME}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    env_file:
+      - .env
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+    - pokemon_network
+
+  pg_admin:
+    image: dpage/pgadmin4:9.9.0
+    container_name: pg_admin
+    ports:
+      - 80:80
+    environment:
+      PGADMIN_DEFAULT_EMAIL: robert.rj.harte@protonmail.com
+      PGADMIN_DEFAULT_PASSWORD: mysecretpassword
+    env_file:
+      - .env
+    depends_on:
+      - "postgres"
+    networks:
+    - pokemon_network
+
+  pokemon:
+    image: pokemon-web:latest
+    container_name: pokemon
+    ports:
+      - 5000:5000
+    environment:
+      POSTGRES_DB_STRING: ${POSTGRES_DB_STRING}
+    env_file:
+      - .env
+    depends_on:
+      - "postgres"
+    networks:
+    - pokemon_network
+
+volumes:
+  postgres_data:
+
+networks:
+  pokemon_network:
+    name: pokemon_network
+    external: false

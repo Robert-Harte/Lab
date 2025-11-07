@@ -1,5 +1,15 @@
+# Global files and folders to be ignored. Should never be uploaded to git
+
 *.log
 *.venv/
-/Python/local_settings/
+*.env
 
+
+################# Project specific files and folders ####################
+
+# Pokemon
 Python/Pokemon/Deployment notes.md
+
+
+# devops. Ignore entire folders
+devops-directive-docker-course-main

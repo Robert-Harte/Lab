@@ -1,22 +1,19 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+from dotenv import load_dotenv, dotenv_values
+import os
 
 DB_NAME = "database.db"
 
+load_dotenv()
+
 db = SQLAlchemy()
-
-
-# DEFINE DATABASE DETAILS
-user = 'postgres'
-password = 'mypassword'
-host = 'host.docker.internal'
-port = 5432
-database = "pokemon"
+DB_STRING = os.getenv('POSTGRES_DB_STRING')
 
 # Initialise the app
 def create_app():
     app = Flask(__name__)
-    app.config["SQLALCHEMY_DATABASE_URI"] = f"postgresql://{user}:{password}@{host}:{port}/{database}"
+    app.config["SQLALCHEMY_DATABASE_URI"] = f"postgresql://{DB_STRING}"
     #app.config["SECRET_KEY"] = "asjlk;fdsAAHDSFHal;k2345"
     db.init_app(app)
     
